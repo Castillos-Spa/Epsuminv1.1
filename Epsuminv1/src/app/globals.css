@@ -1,0 +1,182 @@
+@import "tailwindcss";
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
+
+@import "../styles/animations.css";
+
+@theme {
+  /* Colores */
+    --color-azul-claro: oklch(0.66 0.08 196);
+    --color-azul-oscuro: oklch(28.2% 0.91 267.935);
+    --color-naranja: oklch(75% 0.183 55.934);
+    --color-blanco: oklch(0.96 0.01 39); /* Ajustado para reflejar mejor el blanco */
+    --color-ocre: oklch(0.45 0.24 26);
+    --color-negro: oklch(0.01 0.01 276); /* Ajustado para reflejar mejor el negro */
+
+
+    /* Tipografía */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Espaciado - Sistema de diseño */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* Bordes */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Transiciones */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* Tipografía */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-titles: var(--font-garet);
+  --font-body: var(--font-beltica);
+}
+/* Add custom classes for your fonts */
+h1, h2, h3, h4, h5, h6, .title, .heading {
+  font-family: var(--font-titles);
+}
+
+p, span, div, li, .body-text {
+  font-family: var(--font-body);
+}
+/* {
+  font-family: var(--font-garet), sans-serif;
+}*/
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+@layer components {
+  .bg-naranjita {
+    background-color: #EB9947;
+  }}
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), serif; /* Added sans-serif as a fallback */
+}
+
+/* Estilos para aplicar animaciones a componentes */
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+}
+
+.clip-bottom-curve {
+  clip-path: ellipse(100% 100% at 50% 100%);
+  height: 10%;
+  width: 100%;
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out both;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* En globals.css - Añade estos estilos adicionales para el modal */
+
+.modal-container {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 32rem; /* 512px */
+  margin: auto;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(0);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-animate {
+  animation: modalFadeIn 0.3s ease-out forwards;
+}
+
+.animate-modalFadeIn {
+  animation: modalFadeIn 0.3s ease-out forwards;
+}
