@@ -2,9 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import { CheckCircle, Leaf, BadgeCheck } from 'lucide-react';
 import { getHomeInfo } from '@/lib/get-homePage';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
-const AcercaDeNosotros = async() => {
+export const AcercaDeNosotros = async() => {
   const {titulo, descripcion} = await getHomeInfo()
+  
   
   return (
     <section className="py-16 bg-white" id="nosotros">
@@ -23,7 +25,7 @@ const AcercaDeNosotros = async() => {
           <h2 className="text-3xl font-bold text-blue-950 mb-4 ">{titulo}</h2>
           <div className="bg-blue-950 text-white p-6 rounded-lg">
             <p className="text-lg">
-              {descripcion}
+              <BlocksRenderer content={descripcion}/>
             </p>
           </div>
           <div className="bg-white p-6 border-gray-200 rounded-b-lg items-center flex flex-col gap-4 text-center ">
