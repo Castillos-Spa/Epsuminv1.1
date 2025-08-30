@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_landing_page_seccion_quienes_somos",
+  "info": {
+    "displayName": "Sección_Quienes_Somos",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

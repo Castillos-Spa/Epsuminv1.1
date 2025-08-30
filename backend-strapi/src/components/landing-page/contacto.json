@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_landing_page_contactos",
+  "info": {
+    "displayName": "Contacto",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "descripcion": {
+      "type": "blocks"
+    },
+    "Direccion": {
+      "type": "string"
+    },
+    "Telefono": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "email"
+    },
+    "Horarios": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

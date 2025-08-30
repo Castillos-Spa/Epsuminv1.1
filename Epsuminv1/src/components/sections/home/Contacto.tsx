@@ -1,7 +1,9 @@
-'use client';
+import { getContacto } from '@/lib/get-homePage';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import React from 'react';
 
-const Contacto = () => {
+export const Contacto = async() => {
+  const {descripcion,Direccion,Telefono,Email,Horarios } = await getContacto()
   return (
     <section className="py-16 bg-gray-50" id="contacto">
       <div className="container mx-auto px-4">
@@ -10,8 +12,7 @@ const Contacto = () => {
             <div className="md:w-1/2 bg-blue-950 text-white p-8">
               <h2 className="text-3xl font-bold mb-6">Contáctenos</h2>
               <p className="mb-8">
-                Estamos listos para atender sus consultas y proporcionarle una cotización 
-                personalizada para sus necesidades específicas.
+                <BlocksRenderer content={descripcion}/>
               </p>
               
               <div className="mb-6">
@@ -24,7 +25,7 @@ const Contacto = () => {
                     </svg>
                     <div>
                       <p className="font-medium">Dirección</p>
-                      <p>Ruta 41, km 29, La Calera, Valle de Elqui</p>
+                      <p>{Direccion}</p>
                     </div>
                   </div>
                   
@@ -34,7 +35,7 @@ const Contacto = () => {
                     </svg>
                     <div>
                       <p className="font-medium">Teléfono</p>
-                      <p>+56 9 6146 3898</p>
+                      <p>{Telefono}</p>
                     </div>
                   </div>
                   
@@ -44,7 +45,7 @@ const Contacto = () => {
                     </svg>
                     <div>
                       <p className="font-medium">Email</p>
-                      <p>contacto@epsumin.cl</p>
+                      <p>{Email}</p>
                     </div>
                   </div>
                 </div>
@@ -52,8 +53,8 @@ const Contacto = () => {
               
               <div>
                 <h3 className="text-xl font-semibold mb-4">Horario de Atención</h3>
-                <p>Lunes a Viernes: 8:30 a 18:00</p>
-                <p>Sábado: 8:00 a 13:00</p>
+                <p><BlocksRenderer content={Horarios}/></p>
+                
               </div>
             </div>
             

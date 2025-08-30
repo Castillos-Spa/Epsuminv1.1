@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_landing_page_footers",
+  "info": {
+    "displayName": "Footer",
+    "icon": "arrowDown"
+  },
+  "options": {},
+  "attributes": {
+    "descripcion": {
+      "type": "blocks"
+    },
+    "Instagram": {
+      "type": "string"
+    },
+    "Facebook": {
+      "type": "string"
+    },
+    "Linkedin": {
+      "type": "string"
+    },
+    "Whatsapp": {
+      "type": "string"
+    },
+    "Boletin": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -1,9 +1,13 @@
-"use client";
 import React from 'react';
 import Image from 'next/image';
 import { CheckCircle, Leaf, BadgeCheck } from 'lucide-react';
+import { getQuienesSomos } from '@/lib/get-homePage';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
-const AcercaDeNosotros = () => {
+export const AcercaDeNosotros = async() => {
+  const {titulo, descripcion} = await getQuienesSomos()
+  
+  
   return (
     <section className="py-16 bg-white" id="nosotros">
       <div className="container px-4 flex flex-col md:flex-row items-center gap-10">
@@ -18,14 +22,12 @@ const AcercaDeNosotros = () => {
           </div>
         </div>
         <div className="w-full md:w-1/2 text-center flex flex-col items-center md:items-center gap-4 ">
-          <h2 className="text-3xl font-bold text-blue-950 mb-4 ">¿Quiénes somos?</h2>
+          <h2 className="text-3xl font-bold text-blue-950 mb-4 ">{titulo}</h2>
           <div className="bg-blue-950 text-white p-6 rounded-lg">
             <p className="text-lg">
-              Somos una empresa local del Valle de Elqui. Conformada por profesionales
-              comprometidos en ser un socio estratégico confiable para nuestros clientes.
+              <BlocksRenderer content={descripcion}/>
             </p>
           </div>
-          {/* Correr todo este div mas a la derecha en tamaño xl y 2xl */}
           <div className="bg-white p-6 border-gray-200 rounded-b-lg items-center flex flex-col gap-4 text-center ">
             <p className="text-gray-700 text-xl font-semibold mb-2">Proveemos</p>
             <div className="flex flex-wrap gap-6 mb-6">
