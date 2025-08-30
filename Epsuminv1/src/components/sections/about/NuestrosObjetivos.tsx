@@ -1,8 +1,10 @@
-"use client";
 import React from "react";
 import Image from "next/image";
+import { getMisionVision } from "@/lib/get-homePage";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
-const NuestrosObjetivos = () => {
+export const NuestrosObjetivos = async () => {
+  const {mision_descripcion, vision_descripcion} = await getMisionVision()
   return (
     <section className="w-full bg-white">
       <div className="bg-blue-950 text-white text-center py-3 font-bold tracking-wide text-2xl">
@@ -60,9 +62,7 @@ const NuestrosObjetivos = () => {
         <div>
           <h3 className="font-bold text-base md:text-3xl mb-2">MISIÓN</h3>
           <p className="text-sm md:text-base md:text-xl">
-            Proveer servicios y arriendo de maquinarias de calidad para la industria minera,
-            con soluciones innovadoras, seguras y sustentables, contribuyendo al desarrollo local
-            y priorizando la seguridad, calidad y bienestar de nuestros colaboradores y clientes.
+            <BlocksRenderer content={mision_descripcion}/>
           </p>
         </div>
       </div>
@@ -71,8 +71,7 @@ const NuestrosObjetivos = () => {
         <div>
           <h3 className="font-bold text-base md:text-3xl mb-2">VISIÓN</h3>
           <p className="text-lg md:text-base md:text-xl">
-            Ser reconocidos como líderes en servicios mineros y arriendo de maquinarias,
-            destacando por la calidad del servicio y promoviendo un crecimiento sostenible junto a nuestros clientes y comunidades.
+            <BlocksRenderer content={vision_descripcion}/>
           </p>
         </div>
         <div className="flex items-center justify-center">

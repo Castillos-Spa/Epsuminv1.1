@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { FaInstagram, FaWhatsapp, FaFacebook, FaBars, FaTimes, FaLinkedin } from 'react-icons/fa';
