@@ -38,3 +38,16 @@ export async function getContacto() {
     return res.data.Contacto;
   });
 }
+
+export async function getFooter() {
+  return query("home-page?populate=footer").then((res) => {
+    if (res.data === null) {
+      console.error(
+        "No se encontró el registro para la página de inicio en Strapi."
+      );
+      return null;
+    }
+    console.log(res.data.footer);
+    return res.data.footer;
+  });
+}
