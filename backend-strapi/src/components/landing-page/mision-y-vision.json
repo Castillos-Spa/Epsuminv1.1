@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_landing_page_mision_y_visions",
+  "info": {
+    "displayName": "Mision y vision",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "mision_descripcion": {
+      "type": "blocks"
+    },
+    "vision_descripcion": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}
