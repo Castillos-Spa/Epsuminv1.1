@@ -1,22 +1,12 @@
-"use client";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
+import { getContacto } from '@/lib/get-homePage';
+import { MonedasDeCambio } from './MonedasDeCambio';
 
 
-
-const Footer = () => {
-  const [uf, setUf] = useState<number | null>(null);
-  const [dolar, setDolar] = useState<number | null>(null);
-
-  useEffect(() => {
-    fetch('https://mindicador.cl/api')
-      .then(res => res.json())
-      .then(data => {
-        setUf(data.uf.valor);
-        setDolar(data.dolar.valor);
-      })
-      .catch(err => console.error('Error al obtener valores:', err));
-  }, []);
+export const Footer =async () => {
+  const {Direccion,Telefono,Email} = await getContacto()
+  
   return (
     <footer className="bg-blue-950 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -53,15 +43,7 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <h3 className="text-xl font-bold mb-4">Monedas de Cambio</h3>
-            <ul className="space-y-3">
-              <li className="mb-5">
-                <span>💰 Valor UF: {uf ? `$${uf.toLocaleString('es-CL', { minimumFractionDigits: 2 })}` : 'Cargando...'}</span>
-              </li>
-              <li className="mb-5">
-                <span>💵 Dólar: {dolar ? `$${dolar.toLocaleString('es-CL', { minimumFractionDigits: 2 })}` : 'Cargando...'}</span>
-              </li>
-            </ul>
+            <MonedasDeCambio/>
           </div>
 
           {/* Contact Info */}
@@ -73,19 +55,19 @@ const Footer = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>Ruta 41, km 29, La Calera, Valle de Elqui</span>
+                <span>{Direccion}</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <span>+56 9 6146 3898</span>
+                <span>{Telefono}</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span>contacto@epsumin.cl</span>
+                <span>{Email}</span>
               </li>
             </ul>
           </div>
