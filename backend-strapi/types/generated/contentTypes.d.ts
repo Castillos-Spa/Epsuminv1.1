@@ -389,14 +389,35 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
+    Contacto: Schema.Attribute.Component<'landing-page.contacto', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    footer: Schema.Attribute.Component<'landing-page.footer', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::home-page.home-page'
     >;
+    mision_vision: Schema.Attribute.Component<
+      'landing-page.mision-y-vision',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     quienesSomos: Schema.Attribute.Component<
       'landing-page.seccion-quienes-somos',

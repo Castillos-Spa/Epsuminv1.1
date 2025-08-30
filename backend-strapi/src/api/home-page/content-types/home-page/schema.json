@@ -24,6 +24,36 @@
       },
       "component": "landing-page.seccion-quienes-somos",
       "repeatable": false
+    },
+    "mision_vision": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "landing-page.mision-y-vision",
+      "repeatable": false
+    },
+    "Contacto": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "landing-page.contacto",
+      "repeatable": false
+    },
+    "footer": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "landing-page.footer",
+      "repeatable": false
     }
   }
 }
