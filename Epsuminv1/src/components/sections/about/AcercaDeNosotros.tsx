@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import { CheckCircle, Leaf, BadgeCheck } from 'lucide-react';
-import { getHomeInfo } from '@/lib/get-homePage';
+import { getQuienesSomos } from '@/lib/get-homePage';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 export const AcercaDeNosotros = async() => {
-  const {titulo, descripcion} = await getHomeInfo()
+  const {titulo, descripcion} = await getQuienesSomos()
   
   
   return (
