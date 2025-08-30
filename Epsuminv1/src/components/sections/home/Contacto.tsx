@@ -61,7 +61,7 @@ export const Contacto = async() => {
             <div className="md:w-1/2 p-8">
               <h3 className="text-2xl font-bold text-amber-600 mb-6">Solicite Cotización</h3>
               <form 
-                action="https://formsubmit.co/contacto@epsumin.cl" 
+                action="https://formsubmit.co/lilian.castillo@epsumin.cl"
                 method="POST"
               >
                 <div className="mb-4">
@@ -117,9 +117,12 @@ export const Contacto = async() => {
                     placeholder="Describa su requerimiento"
                   ></textarea>
                 </div>
-
-                <button 
-                  type="submit" 
+                <input type="text" name="_honey" style={{ display: "none" }}></input>
+                <input type="hidden" name="_next" value="https://epsumin.cl/"></input>
+                <input type="hidden" name="_cc" value="administrador@epsumin.cl"></input>
+                <input type="hidden" name="_template" value="table"></input>
+                <button
+                  type="submit"
                   className="w-full bg-amber-600 text-white py-3 rounded font-medium hover:bg-blue-950 transition-colors"
                 >
                   Enviar Solicitud
