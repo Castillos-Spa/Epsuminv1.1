@@ -20,6 +20,11 @@
       "type": "component",
       "component": "epp.epp",
       "repeatable": true
+    },
+    "noticias": {
+      "type": "component",
+      "component": "noticias.noticias",
+      "repeatable": true
     }
   }
 }

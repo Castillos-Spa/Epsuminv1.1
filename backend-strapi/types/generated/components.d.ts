@@ -76,6 +76,20 @@ export interface LandingPageSeccionQuienesSomos extends Struct.ComponentSchema {
   };
 }
 
+export interface NoticiasNoticias extends Struct.ComponentSchema {
+  collectionName: 'components_noticias_noticias';
+  info: {
+    displayName: 'Noticias';
+    icon: 'cast';
+  };
+  attributes: {
+    contenido_completo: Schema.Attribute.Blocks;
+    extracto: Schema.Attribute.Text;
+    imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    titulo: Schema.Attribute.String;
+  };
+}
+
 export interface ProductosDestacadosProducto extends Struct.ComponentSchema {
   collectionName: 'components_productos_destacados_productos';
   info: {
@@ -98,6 +112,7 @@ declare module '@strapi/strapi' {
       'landing-page.mision-y-vision': LandingPageMisionYVision;
       'landing-page.redes-sociales': LandingPageRedesSociales;
       'landing-page.seccion-quienes-somos': LandingPageSeccionQuienesSomos;
+      'noticias.noticias': NoticiasNoticias;
       'productos-destacados.producto': ProductosDestacadosProducto;
     }
   }

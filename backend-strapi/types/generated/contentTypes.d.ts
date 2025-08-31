@@ -398,6 +398,7 @@ export interface ApiCarrouselCarrousel extends Struct.SingleTypeSchema {
       'api::carrousel.carrousel'
     > &
       Schema.Attribute.Private;
+    noticias: Schema.Attribute.Component<'noticias.noticias', true>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
