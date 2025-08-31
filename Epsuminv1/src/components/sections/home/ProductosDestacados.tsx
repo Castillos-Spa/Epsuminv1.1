@@ -1,5 +1,3 @@
-"use client";
-
 import React from 'react';
 
 import ProductCard2 from '@/components/common/ProductCard2';
@@ -11,7 +9,7 @@ const productos = [
   { id: 4, nombre: 'Botas Industriales', precio: 65000, imagen: '/img/botas.png', isNew: true },
 ];
 
-const ProductosDestacados = () => {
+export const ProductosDestacados = () => {
   const handleVerDetalles = (id: number) => {
     console.log(`Ver detalles del producto ${id}`);
     // Aquí podrías implementar la navegación a la página de detalles

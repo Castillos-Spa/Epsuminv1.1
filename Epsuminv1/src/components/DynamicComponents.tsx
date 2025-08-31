@@ -6,11 +6,6 @@ const DynamicFloatingWhatsApp = dynamic(() => import('react-floating-whatsapp').
   ssr: false,
 });
 
-const DynamicCatalogo = dynamic(() => import('@/components/sections/productos/catalogo/catalogoepp'), {
-  loading: () => <div className="h-96 w-full bg-gray-100 animate-pulse rounded-md"></div>,
-  ssr: false,
-});
-
 const DynamicTestimonios = dynamic(() => import('@/components/sections/home/Testimonios'), {
   loading: () => <div className="h-80 w-full bg-gray-100 animate-pulse rounded-md"></div>,
   ssr: false,
@@ -34,7 +29,6 @@ export function DynamicComponents() {
                 className="fixed bottom-4 right-4 z-50 text-black"
                 avatar="/img/avatar.png"
             />
-            <DynamicCatalogo />
             <DynamicTestimonios />
             <DynamicNoticias />
         </>
