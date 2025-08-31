@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_productos_destacados_productos",
+  "info": {
+    "displayName": "producto",
+    "icon": "alien"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "blocks"
+    },
+    "imagen": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}
