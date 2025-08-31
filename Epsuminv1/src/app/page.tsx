@@ -9,9 +9,9 @@ import {NuestrosObjetivos} from "@/components/sections/about/NuestrosObjetivos";
 import NuestrosValores from "@/components/sections/about/NuestrosValores";
 import {Contacto} from "@/components/sections/home/Contacto";
 import CatalogoDescarga from "@/components/sections/home/CatalogoDescarga";
-
-// Import your new Client Component that handles dynamic loading
 import { DynamicComponents } from "@/components/DynamicComponents";
+import ElementosProteccionServer from "@/components/sections/productos/catalogo/catalogoepp";
+
 
 export default function Home() {
     return (
@@ -19,14 +19,19 @@ export default function Home() {
             <Navbar /> 
             <Hero />
             
-            {/* Render the new component here */}
-            <DynamicComponents />
-            
             <ProductosDestacados />
             <CatalogoDescarga />
             
+
+            <ElementosProteccionServer/>
+            
             <ServicioInfo />
+            
+            {/* Componentes dinámicos (WhatsApp, Testimonios, Noticias) */}
+            <DynamicComponents />
+
             <MarcasAsociadas />
+            
             <AcercaDeNosotros />
             <NuestrosObjetivos />
             <NuestrosValores />
