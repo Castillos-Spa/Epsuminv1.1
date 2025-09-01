@@ -14,7 +14,8 @@
     "destacados": {
       "type": "component",
       "component": "productos-destacados.producto",
-      "repeatable": true
+      "repeatable": true,
+      "max": 3
     },
     "epp": {
       "type": "component",

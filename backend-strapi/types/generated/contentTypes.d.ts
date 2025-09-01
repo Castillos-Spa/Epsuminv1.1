@@ -390,7 +390,13 @@ export interface ApiCarrouselCarrousel extends Struct.SingleTypeSchema {
     destacados: Schema.Attribute.Component<
       'productos-destacados.producto',
       true
-    >;
+    > &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+        },
+        number
+      >;
     epp: Schema.Attribute.Component<'epp.epp', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
