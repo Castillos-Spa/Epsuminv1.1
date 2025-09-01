@@ -1,23 +1,20 @@
 export default [
-  'strapi::logger',
-  'strapi::errors',
-  'strapi::security',
+  "strapi::logger",
+  "strapi::errors",
+  "strapi::security",
+  "strapi::cors",
+  "strapi::poweredBy",
+  "strapi::query",
   {
-    name: 'strapi::cors',
-    config: {
-      enabled: true,
-      origin: [
-        'http://localhost:3000' // Solo tu dominio local para desarrollo
-      ],
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
-      keepHeaderOnError: true,
-    },
+    name: "strapi::body",
+    config: {
+      formidable: {
+        maxFileSize: 3 * 1024 * 1024,
+      },
+    },
   },
-  'strapi::poweredBy',
-  'strapi::query',
-  'strapi::body',
-  'strapi::session',
-  'strapi::favicon',
-  'strapi::public',
+  "strapi::session",
+  "strapi::favicon",
+  "strapi::public",
+
 ];
