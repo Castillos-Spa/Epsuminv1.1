@@ -83,8 +83,10 @@ export interface NoticiasNoticias extends Struct.ComponentSchema {
     icon: 'cast';
   };
   attributes: {
+    Categoria: Schema.Attribute.String;
     contenido_completo: Schema.Attribute.Blocks;
     extracto: Schema.Attribute.Text;
+    fecha: Schema.Attribute.Date;
     imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     titulo: Schema.Attribute.String;
   };

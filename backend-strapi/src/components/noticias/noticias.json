@@ -24,6 +24,12 @@
     },
     "contenido_completo": {
       "type": "blocks"
+    },
+    "Categoria": {
+      "type": "string"
+    },
+    "fecha": {
+      "type": "date"
     }
   },
   "config": {}
