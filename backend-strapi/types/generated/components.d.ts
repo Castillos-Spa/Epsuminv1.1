@@ -12,6 +12,19 @@ export interface EppEpp extends Struct.ComponentSchema {
   };
 }
 
+export interface HeroHero extends Struct.ComponentSchema {
+  collectionName: 'components_hero_heroes';
+  info: {
+    displayName: 'hero';
+    icon: 'alien';
+  };
+  attributes: {
+    descripcion: Schema.Attribute.Blocks;
+    imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    titulo: Schema.Attribute.String;
+  };
+}
+
 export interface LandingPageContacto extends Struct.ComponentSchema {
   collectionName: 'components_landing_page_contactos';
   info: {
@@ -109,6 +122,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'epp.epp': EppEpp;
+      'hero.hero': HeroHero;
       'landing-page.contacto': LandingPageContacto;
       'landing-page.footer': LandingPageFooter;
       'landing-page.mision-y-vision': LandingPageMisionYVision;
