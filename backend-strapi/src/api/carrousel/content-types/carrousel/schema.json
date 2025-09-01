@@ -14,17 +14,20 @@
     "destacados": {
       "type": "component",
       "component": "productos-destacados.producto",
-      "repeatable": true
+      "repeatable": true,
+      "max": 10
     },
     "epp": {
       "type": "component",
       "component": "epp.epp",
-      "repeatable": true
+      "repeatable": true,
+      "max": 15
     },
     "noticias": {
       "type": "component",
       "component": "noticias.noticias",
-      "repeatable": true
+      "repeatable": true,
+      "max": 3
     }
   }
 }
