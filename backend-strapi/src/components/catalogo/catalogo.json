@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_catalogo_catalogos",
+  "info": {
+    "displayName": "Catalogo",
+    "icon": "attachment"
+  },
+  "options": {},
+  "attributes": {
+    "Catalogo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -23,6 +23,9 @@
     },
     "Boletin": {
       "type": "string"
+    },
+    "Tiktok": {
+      "type": "string"
     }
   },
   "config": {}
