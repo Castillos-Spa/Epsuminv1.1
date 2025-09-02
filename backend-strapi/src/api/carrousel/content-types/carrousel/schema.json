@@ -20,12 +20,21 @@
     "epp": {
       "type": "component",
       "component": "epp.epp",
-      "repeatable": true
+      "repeatable": true,
+      "max": 3
     },
     "noticias": {
       "type": "component",
       "component": "noticias.noticias",
-      "repeatable": true
+      "repeatable": true,
+      "max": 3
+    },
+    "hero": {
+      "type": "component",
+      "component": "hero.hero",
+      "repeatable": true,
+      "min": 1,
+      "max": 6
     }
   }
 }

@@ -397,14 +397,34 @@ export interface ApiCarrouselCarrousel extends Struct.SingleTypeSchema {
         },
         number
       >;
-    epp: Schema.Attribute.Component<'epp.epp', true>;
+    epp: Schema.Attribute.Component<'epp.epp', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+        },
+        number
+      >;
+    hero: Schema.Attribute.Component<'hero.hero', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 6;
+          min: 1;
+        },
+        number
+      >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::carrousel.carrousel'
     > &
       Schema.Attribute.Private;
-    noticias: Schema.Attribute.Component<'noticias.noticias', true>;
+    noticias: Schema.Attribute.Component<'noticias.noticias', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+        },
+        number
+      >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
