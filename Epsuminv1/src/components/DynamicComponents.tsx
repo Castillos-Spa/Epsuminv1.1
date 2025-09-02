@@ -13,11 +13,11 @@ const DynamicTestimonios = dynamic(() => import('@/components/sections/home/Test
 
 
 
-export function DynamicComponents() {
+export function DynamicComponents({ phoneNumber }: { phoneNumber: string }) {
     return (
         <>
             <DynamicFloatingWhatsApp
-                phoneNumber="56961463898"
+                phoneNumber={phoneNumber}
                 accountName="EPSUMIN"
                 allowClickAway={false}
                 notification={true}
