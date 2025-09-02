@@ -393,14 +393,14 @@ export interface ApiCarrouselCarrousel extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.SetMinMax<
         {
-          max: 3;
+          max: 10;
         },
         number
       >;
     epp: Schema.Attribute.Component<'epp.epp', true> &
       Schema.Attribute.SetMinMax<
         {
-          max: 3;
+          max: 15;
         },
         number
       >;
@@ -448,6 +448,12 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
+    Catalogo: Schema.Attribute.Component<'catalogo.catalogo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     Contacto: Schema.Attribute.Component<'landing-page.contacto', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -490,6 +496,12 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    valores: Schema.Attribute.Component<'valores.valores', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 

@@ -54,6 +54,26 @@
       },
       "component": "landing-page.footer",
       "repeatable": false
+    },
+    "valores": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "valores.valores",
+      "repeatable": false
+    },
+    "Catalogo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "catalogo.catalogo",
+      "repeatable": false
     }
   }
 }

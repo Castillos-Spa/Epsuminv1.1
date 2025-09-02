@@ -1,5 +1,16 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CatalogoCatalogo extends Struct.ComponentSchema {
+  collectionName: 'components_catalogo_catalogos';
+  info: {
+    displayName: 'Catalogo';
+    icon: 'attachment';
+  };
+  attributes: {
+    Catalogo: Schema.Attribute.Media<'files'>;
+  };
+}
+
 export interface EppEpp extends Struct.ComponentSchema {
   collectionName: 'components_epp_epps';
   info: {
@@ -7,7 +18,7 @@ export interface EppEpp extends Struct.ComponentSchema {
     icon: 'bell';
   };
   attributes: {
-    imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    imagen: Schema.Attribute.Media<'images'>;
     titulo: Schema.Attribute.String;
   };
 }
@@ -20,7 +31,7 @@ export interface HeroHero extends Struct.ComponentSchema {
   };
   attributes: {
     descripcion: Schema.Attribute.Blocks;
-    imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    imagen: Schema.Attribute.Media<'images'>;
     titulo: Schema.Attribute.String;
   };
 }
@@ -52,6 +63,7 @@ export interface LandingPageFooter extends Struct.ComponentSchema {
     Facebook: Schema.Attribute.String;
     Instagram: Schema.Attribute.String;
     Linkedin: Schema.Attribute.String;
+    Tiktok: Schema.Attribute.String;
     Whatsapp: Schema.Attribute.String;
   };
 }
@@ -100,7 +112,7 @@ export interface NoticiasNoticias extends Struct.ComponentSchema {
     contenido_completo: Schema.Attribute.Blocks;
     extracto: Schema.Attribute.Text;
     fecha: Schema.Attribute.Date;
-    imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    imagen: Schema.Attribute.Media<'images'>;
     titulo: Schema.Attribute.String;
   };
 }
@@ -113,14 +125,29 @@ export interface ProductosDestacadosProducto extends Struct.ComponentSchema {
   };
   attributes: {
     descripcion: Schema.Attribute.Blocks;
-    imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    imagen: Schema.Attribute.Media<'images'>;
     titulo: Schema.Attribute.String;
+  };
+}
+
+export interface ValoresValores extends Struct.ComponentSchema {
+  collectionName: 'components_valores_valores';
+  info: {
+    displayName: 'Valores';
+    icon: 'crown';
+  };
+  attributes: {
+    Calidad: Schema.Attribute.String;
+    Diversidad: Schema.Attribute.String;
+    Seguridad: Schema.Attribute.String;
+    Sostenibilidad: Schema.Attribute.String;
   };
 }
 
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'catalogo.catalogo': CatalogoCatalogo;
       'epp.epp': EppEpp;
       'hero.hero': HeroHero;
       'landing-page.contacto': LandingPageContacto;
@@ -130,6 +157,7 @@ declare module '@strapi/strapi' {
       'landing-page.seccion-quienes-somos': LandingPageSeccionQuienesSomos;
       'noticias.noticias': NoticiasNoticias;
       'productos-destacados.producto': ProductosDestacadosProducto;
+      'valores.valores': ValoresValores;
     }
   }
 }
