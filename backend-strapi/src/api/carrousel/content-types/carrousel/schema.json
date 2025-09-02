@@ -28,6 +28,13 @@
       "component": "noticias.noticias",
       "repeatable": true,
       "max": 3
+    },
+    "hero": {
+      "type": "component",
+      "component": "hero.hero",
+      "repeatable": true,
+      "min": 1,
+      "max": 6
     }
   }
 }

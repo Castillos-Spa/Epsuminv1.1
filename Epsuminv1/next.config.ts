@@ -12,6 +12,17 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "epsuminv11-production.up.railway.app",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+        pathname: "/**",
+      },
+
+      {
+        protocol: "https",
         hostname: "drive.google.com",
         port: "",
         pathname: "/uc/**",

@@ -11,10 +11,7 @@ const DynamicTestimonios = dynamic(() => import('@/components/sections/home/Test
   ssr: false,
 });
 
-const DynamicNoticias = dynamic(() => import('@/components/sections/home/Noticias'), {
-  loading: () => <div className="h-80 w-full bg-gray-100 animate-pulse rounded-md"></div>,
-  ssr: false,
-});
+
 
 export function DynamicComponents() {
     return (
@@ -30,7 +27,6 @@ export function DynamicComponents() {
                 avatar="/img/avatar.png"
             />
             <DynamicTestimonios />
-            <DynamicNoticias />
         </>
     );
 }

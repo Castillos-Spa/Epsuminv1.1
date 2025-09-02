@@ -390,46 +390,41 @@ export interface ApiCarrouselCarrousel extends Struct.SingleTypeSchema {
     destacados: Schema.Attribute.Component<
       'productos-destacados.producto',
       true
-    >;
-    epp: Schema.Attribute.Component<'epp.epp', true>;
+    > &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+        },
+        number
+      >;
+    epp: Schema.Attribute.Component<'epp.epp', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+        },
+        number
+      >;
+    hero: Schema.Attribute.Component<'hero.hero', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 6;
+          min: 1;
+        },
+        number
+      >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::carrousel.carrousel'
     > &
       Schema.Attribute.Private;
-    noticias: Schema.Attribute.Component<'noticias.noticias', true>;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiHeroHero extends Struct.CollectionTypeSchema {
-  collectionName: 'heros';
-  info: {
-    displayName: 'hero';
-    pluralName: 'heros';
-    singularName: 'hero';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    hero: Schema.Attribute.Component<'hero.hero', true> &
+    noticias: Schema.Attribute.Component<'noticias.noticias', true> &
       Schema.Attribute.SetMinMax<
         {
-          max: 6;
+          max: 3;
         },
         number
       >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::hero.hero'> &
-      Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1008,7 +1003,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::carrousel.carrousel': ApiCarrouselCarrousel;
-      'api::hero.hero': ApiHeroHero;
       'api::home-page.home-page': ApiHomePageHomePage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
