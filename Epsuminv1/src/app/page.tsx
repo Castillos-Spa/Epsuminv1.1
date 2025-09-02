@@ -12,8 +12,10 @@ import CatalogoDescarga from "@/components/sections/home/CatalogoDescarga";
 import { DynamicComponents } from "@/components/DynamicComponents";
 import ElementosProteccionServer from "@/components/sections/productos/catalogo/catalogoepp";
 import Noticias from "@/components/sections/home/Noticias";
+import { getFooter } from "@/lib/get-homePage";
 
-export default function Home() {
+export default async function Home() {
+    const contacto = await getFooter();
     return (
         <main className="min-h-screen">
             <Navbar /> 
@@ -28,7 +30,7 @@ export default function Home() {
             <ServicioInfo />
             
             {/* Componentes dinámicos (WhatsApp, Testimonios, Noticias) */}
-            <DynamicComponents />
+            <DynamicComponents phoneNumber={contacto?.Whatsapp }/>
             <Noticias/>
             <MarcasAsociadas />
             

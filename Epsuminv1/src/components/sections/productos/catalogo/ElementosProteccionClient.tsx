@@ -10,21 +10,7 @@ interface ElementosProteccionClientProps {
 }
 
 export default function ElementosProteccionClient({ elementosProteccion }: ElementosProteccionClientProps) {
-  const strapiHost = process.env.NEXT_PUBLIC_STRAPI_HOST;
 
-  // Función para obtener la URL de la imagen
-  const getImageUrl = (elemento: any) => {
-    // Si tiene imagen en Strapi, usa el formato medium (750x750)
-    if (elemento.imagen?.formats?.medium?.url) {
-      return `${strapiHost}${elemento.imagen.formats.medium.url}`;
-    }
-    // Fallback a la imagen original si no hay formato medium
-    if (elemento.imagen?.url) {
-      return `${strapiHost}${elemento.imagen.url}`;
-    }
-    // Fallback a placeholder si no hay imagen
-    return "/placeholder.svg";
-  };
 
   return (
     <div className="w-full">
@@ -138,7 +124,7 @@ export default function ElementosProteccionClient({ elementosProteccion }: Eleme
                       {/* Contenedor de imagen con altura y ancho fijo */}
                       <div className="w-full h-48 flex items-center justify-center overflow-hidden">
                         <Image
-                          src={getImageUrl(elemento)}
+                          src={elemento.imagenUrl || "/placeholder.svg"}
                           width={180}
                           height={180}
                           alt={elemento.titulo || elemento.nombre || "Elemento de protección"}

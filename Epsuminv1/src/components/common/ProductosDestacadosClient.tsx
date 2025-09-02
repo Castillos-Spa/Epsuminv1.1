@@ -13,21 +13,6 @@ const ProductosDestacadosClient = ({ productos }: ProductosDestacadosClientProps
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   
-  const strapiHost = process.env.NEXT_PUBLIC_STRAPI_HOST;
-  
-  // Función para obtener la URL de la imagen
-  const getImageUrl = (producto: any) => {
-    // Si tiene imagen en Strapi, usa el formato medium (750x750)
-    if (producto.imagen?.formats?.medium?.url) {
-      return `${strapiHost}${producto.imagen.formats.medium.url}`;
-    }
-    // Fallback a la imagen original si no hay formato medium
-    if (producto.imagen?.url) {
-      return `${strapiHost}${producto.imagen.url}`;
-    }
-    // Fallback a placeholder si no hay imagen
-    return "https://via.placeholder.com/300x200/e5e7eb/6b7280?text=Producto";
-  };
 
   const handleVerDetalles = (id: number) => {
     const producto = productos.find(p => p.id === id);
@@ -55,7 +40,7 @@ const ProductosDestacadosClient = ({ productos }: ProductosDestacadosClientProps
               <ProductCard2
                 id={producto.id}
                 nombre={producto.titulo}
-                imagen={getImageUrl(producto)}
+                imagen={producto.imagenUrl || "/placeholder.svg"}
                 onVerDetalles={handleVerDetalles}
               />
             </div>
@@ -88,7 +73,7 @@ const ProductosDestacadosClient = ({ productos }: ProductosDestacadosClientProps
               <div className="flex flex-col md:flex-row items-start md:items-center mb-6">
                 <div className="w-24 h-24 relative bg-gray-100 rounded mb-4 md:mb-0">
                   <Image
-                    src={getImageUrl(selectedProduct)}
+                    src={selectedProduct.imagenUrl || "/placeholder.svg"}
                     alt={selectedProduct.titulo}
                     fill
                     className="object-contain p-2"
