@@ -11,7 +11,7 @@ import {Contacto} from "@/components/sections/home/Contacto";
 import CatalogoDescarga from "@/components/sections/home/CatalogoDescarga";
 import { DynamicComponents } from "@/components/DynamicComponents";
 import ElementosProteccionServer from "@/components/sections/productos/catalogo/catalogoepp";
-
+import Noticias from "@/components/sections/home/Noticias";
 
 export default function Home() {
     return (
@@ -29,7 +29,7 @@ export default function Home() {
             
             {/* Componentes dinámicos (WhatsApp, Testimonios, Noticias) */}
             <DynamicComponents />
-
+            <Noticias/>
             <MarcasAsociadas />
             
             <AcercaDeNosotros />

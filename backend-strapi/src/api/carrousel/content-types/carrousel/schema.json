@@ -15,13 +15,13 @@
       "type": "component",
       "component": "productos-destacados.producto",
       "repeatable": true,
-      "max": 3
+      "max": 10
     },
     "epp": {
       "type": "component",
       "component": "epp.epp",
       "repeatable": true,
-      "max": 3
+      "max": 15
     },
     "noticias": {
       "type": "component",
