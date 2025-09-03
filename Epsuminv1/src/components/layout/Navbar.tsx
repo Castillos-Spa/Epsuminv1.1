@@ -11,6 +11,7 @@ export default async function Navbar() {
         facebook: contacto?.Facebook || "https://www.facebook.com/epsumin",
         instagram: contacto?.Instagram || "https://www.instagram.com/epsumin",
         linkedin: contacto?.Linkedin || "https://www.linkedin.com/epsumin",
+        tiktok: contacto?.Tiktok || "https://www.tiktok.com/@epsumin",
       }}
     />
   );

@@ -21,10 +21,10 @@ export const MonedasDeCambio = () => {
       <h3 className="text-xl font-bold mb-4">Monedas de Cambio</h3>
       <ul className="space-y-3">
         <li className="mb-5">
-          <span>💰 Valor UF: {uf ? `$${uf.toLocaleString('es-CL', { minimumFractionDigits: 2 })}` : 'Cargando...'}</span>
+          <span>Valor UF: {uf ? `$${uf.toLocaleString('es-CL', { minimumFractionDigits: 2 })}` : 'Cargando...'}</span>
         </li>
         <li className="mb-5">
-          <span>💵 Dólar: {dolar ? `$${dolar.toLocaleString('es-CL', { minimumFractionDigits: 2 })}` : 'Cargando...'}</span>
+          <span>Dólar: {dolar ? `$${dolar.toLocaleString('es-CL', { minimumFractionDigits: 2 })}` : 'Cargando...'}</span>
         </li>
       </ul>
     </div>
