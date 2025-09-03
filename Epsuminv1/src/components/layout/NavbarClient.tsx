@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import Link from "next/link";
 import {
   FaInstagram,
-  FaWhatsapp,
   FaFacebook,
   FaBars,
   FaTimes,
   FaLinkedin,
+  FaTiktok
 } from "react-icons/fa";
 
 export default function NavbarClient({ contacto }: { contacto: any }) {
@@ -75,7 +75,7 @@ export default function NavbarClient({ contacto }: { contacto: any }) {
 
           {/* Redes sociales (derecha) */}
           <div className="hidden md:flex md:flex-1 md:w-1/4 justify-end space-x-4">
-            <a
+           <a
               href={contacto.facebook}
               target="_blank"
               rel="noopener noreferrer"
@@ -97,10 +97,19 @@ export default function NavbarClient({ contacto }: { contacto: any }) {
               href={contacto.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-amber-600 hover:text-blue-950 transition-colors"
+              className="text-amber-600 hover:text-[#0A66C2] transition-colors"
               aria-label="LinkedIn"
             >
               <FaLinkedin size={22} />
+            </a>
+            <a
+              href={contacto.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-600 hover:text-black transition-colors"
+              aria-label="TikTok"
+            >
+              <FaTiktok size={22} />
             </a>
           </div>
         </div>
@@ -141,32 +150,41 @@ export default function NavbarClient({ contacto }: { contacto: any }) {
               {/* Redes sociales en menú móvil */}
               <div className="flex space-x-6 pt-2 justify-center">
                 <a
-                  href={contacto.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-orange-400 hover:text-[#E1306C] transition-colors"
-                  aria-label="Instagram"
-                >
-                  <FaInstagram size={22} />
-                </a>
-                <a
-                  href={`https://wa.me/${contacto.whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-orange-400 hover:text-[#25D366] transition-colors"
-                  aria-label="WhatsApp"
-                >
-                  <FaWhatsapp size={22} />
-                </a>
-                <a
-                  href={contacto.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-orange-400 hover:text-[#1877F2] transition-colors"
-                  aria-label="Facebook"
-                >
-                  <FaFacebook size={22} />
-                </a>
+              href={contacto.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-600 hover:text-[#1877F2] transition-colors"
+              aria-label="Facebook"
+            >
+              <FaFacebook size={22} />
+            </a>
+            <a
+              href={contacto.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-600 hover:text-[#E1306C] transition-colors"
+              aria-label="Instagram"
+            >
+              <FaInstagram size={22} />
+            </a>
+            <a
+              href={contacto.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-600 hover:text-[#0A66C2] transition-colors"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin size={22} />
+            </a>
+            <a
+              href={contacto.Tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-600 hover:text-black transition-colors"
+              aria-label="TikTok"
+            >
+              <FaTiktok size={22} />
+            </a>
               </div>
             </div>
           </div>
