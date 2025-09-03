@@ -1,13 +1,16 @@
 {
-  "collectionName": "components_epp_epps",
+  "collectionName": "components_hero_heroes",
   "info": {
-    "displayName": "epp",
-    "icon": "bell"
+    "displayName": "hero",
+    "icon": "alien"
   },
   "options": {},
   "attributes": {
     "titulo": {
       "type": "string"
+    },
+    "descripcion": {
+      "type": "blocks"
     },
     "imagen": {
       "type": "media",

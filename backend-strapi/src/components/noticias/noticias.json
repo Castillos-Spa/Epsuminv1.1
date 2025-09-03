@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_noticias_noticias",
+  "info": {
+    "displayName": "Noticias",
+    "icon": "cast"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "extracto": {
+      "type": "text"
+    },
+    "imagen": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "contenido_completo": {
+      "type": "blocks"
+    },
+    "Categoria": {
+      "type": "string"
+    },
+    "fecha": {
+      "type": "date"
+    }
+  },
+  "config": {}
+}

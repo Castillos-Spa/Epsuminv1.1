@@ -23,7 +23,7 @@ const ProductosDestacados = async () => {
   return (
     <section className="py-16 fade-in bg-stone-100">
       <div className="mx-10 px-5 border-4 rounded-lg bg-white">
-        <h2 className="text-3xl text-start ml-6 font-bold text-center text-blue-950 mb-12 my-4">
+        <h2 className="text-3xl text-start ml-6 font-bold text-blue-950 mb-12 my-4">
           Destacados de la Semana
         </h2>
         {/* Pasamos el array de cards al componente de cliente */}

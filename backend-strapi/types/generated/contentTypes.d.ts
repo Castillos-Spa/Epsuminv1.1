@@ -390,14 +390,41 @@ export interface ApiCarrouselCarrousel extends Struct.SingleTypeSchema {
     destacados: Schema.Attribute.Component<
       'productos-destacados.producto',
       true
-    >;
-    epp: Schema.Attribute.Component<'epp.epp', true>;
+    > &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 10;
+        },
+        number
+      >;
+    epp: Schema.Attribute.Component<'epp.epp', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 15;
+        },
+        number
+      >;
+    hero: Schema.Attribute.Component<'hero.hero', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 6;
+          min: 1;
+        },
+        number
+      >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::carrousel.carrousel'
     > &
       Schema.Attribute.Private;
+    noticias: Schema.Attribute.Component<'noticias.noticias', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+        },
+        number
+      >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -421,6 +448,12 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
+    Catalogo: Schema.Attribute.Component<'catalogo.catalogo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     Contacto: Schema.Attribute.Component<'landing-page.contacto', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -463,6 +496,12 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    valores: Schema.Attribute.Component<'valores.valores', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 

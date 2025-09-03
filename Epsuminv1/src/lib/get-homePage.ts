@@ -51,3 +51,16 @@ export async function getFooter() {
     return res.data.footer;
   });
 }
+
+export async function getValores() {
+  return query("home-page?populate=valores").then((res) => {
+    if (res.data === null) {
+      console.error(
+        "No se encontró el registro para la página de inicio en Strapi."
+      );
+      return null;
+    }
+    console.log(res.data.valores);
+    return res.data.valores;
+  });
+}

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_valores_valores",
+  "info": {
+    "displayName": "Valores",
+    "icon": "crown"
+  },
+  "options": {},
+  "attributes": {
+    "Diversidad": {
+      "type": "string"
+    },
+    "Sostenibilidad": {
+      "type": "string"
+    },
+    "Seguridad": {
+      "type": "string"
+    },
+    "Calidad": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
