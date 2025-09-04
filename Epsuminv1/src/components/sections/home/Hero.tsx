@@ -1,5 +1,5 @@
 // components/Hero/Hero.tsx
-import { getHero } from "@/lib/get-hero";
+import { getHero } from "@/lib/get-carrousel";
 import HeroClient from "./HeroClient";
 
 export default async function Hero() {

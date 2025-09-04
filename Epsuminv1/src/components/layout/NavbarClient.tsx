@@ -10,8 +10,11 @@ import {
   FaLinkedin,
   FaTiktok
 } from "react-icons/fa";
-
-export default function NavbarClient({ contacto }: { contacto: any }) {
+import { Redes } from "@/types/strapi";
+interface NavbarClientProps {
+  readonly contacto: Redes | null;
+}
+export default function NavbarClient({ contacto }: NavbarClientProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -76,7 +79,7 @@ export default function NavbarClient({ contacto }: { contacto: any }) {
           {/* Redes sociales (derecha) */}
           <div className="hidden md:flex md:flex-1 md:w-1/4 justify-end space-x-4">
            <a
-              href={contacto.facebook}
+              href={contacto?.Facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="text-amber-600 hover:text-[#1877F2] transition-colors"
@@ -85,7 +88,7 @@ export default function NavbarClient({ contacto }: { contacto: any }) {
               <FaFacebook size={22} />
             </a>
             <a
-              href={contacto.instagram}
+              href={contacto?.Instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="text-amber-600 hover:text-[#E1306C] transition-colors"
@@ -94,7 +97,7 @@ export default function NavbarClient({ contacto }: { contacto: any }) {
               <FaInstagram size={22} />
             </a>
             <a
-              href={contacto.linkedin}
+              href={contacto?.Linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="text-amber-600 hover:text-[#0A66C2] transition-colors"
@@ -103,7 +106,7 @@ export default function NavbarClient({ contacto }: { contacto: any }) {
               <FaLinkedin size={22} />
             </a>
             <a
-              href={contacto.tiktok}
+              href={contacto?.Tiktok}
               target="_blank"
               rel="noopener noreferrer"
               className="text-amber-600 hover:text-black transition-colors"
@@ -150,7 +153,7 @@ export default function NavbarClient({ contacto }: { contacto: any }) {
               {/* Redes sociales en menú móvil */}
               <div className="flex space-x-6 pt-2 justify-center">
                 <a
-              href={contacto.facebook}
+              href={contacto?.Facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="text-amber-600 hover:text-[#1877F2] transition-colors"
@@ -159,7 +162,7 @@ export default function NavbarClient({ contacto }: { contacto: any }) {
               <FaFacebook size={22} />
             </a>
             <a
-              href={contacto.instagram}
+              href={contacto?.Instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="text-amber-600 hover:text-[#E1306C] transition-colors"
@@ -168,7 +171,7 @@ export default function NavbarClient({ contacto }: { contacto: any }) {
               <FaInstagram size={22} />
             </a>
             <a
-              href={contacto.linkedin}
+              href={contacto?.Linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="text-amber-600 hover:text-[#0A66C2] transition-colors"
@@ -177,7 +180,7 @@ export default function NavbarClient({ contacto }: { contacto: any }) {
               <FaLinkedin size={22} />
             </a>
             <a
-              href={contacto.Tiktok}
+              href={contacto?.Tiktok}
               target="_blank"
               rel="noopener noreferrer"
               className="text-amber-600 hover:text-black transition-colors"

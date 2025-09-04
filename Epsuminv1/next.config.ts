@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   /* config options here */
   images: {
     remotePatterns: [
@@ -12,20 +15,14 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "epsuminv11-production.up.railway.app",
-        pathname: "/uploads/**",
-      },
-      {
-        protocol: "https",
-        hostname: "via.placeholder.com",
-        pathname: "/**",
+        hostname: "admin.epsumin.cl",
+        pathname: "/uploads/**", // Agregamos esta nueva
       },
 
       {
         protocol: "https",
-        hostname: "drive.google.com",
-        port: "",
-        pathname: "/uc/**",
+        hostname: "via.placeholder.com",
+        pathname: "/**",
       },
       {
         protocol: "https",

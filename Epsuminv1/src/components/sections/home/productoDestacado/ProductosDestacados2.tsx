@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDestacados } from '@/lib/get-destacados';
+import { getDestacados } from '@/lib/get-carrousel';
 import ProductosDestacadosClient from '@/components/common/ProductosDestacadosClient';
 
 const ProductosDestacados = async () => {

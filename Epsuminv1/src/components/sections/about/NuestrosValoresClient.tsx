@@ -2,8 +2,11 @@
 import React from "react";
 import "aos/dist/aos.css";
 import { FaUsers, FaLeaf, FaShieldAlt, FaStar } from "react-icons/fa";
-
-export default function NuestrosValoresClient({ valores }) {
+import { Valores } from "@/types/strapi";
+interface NuestrosValoresClientProps {
+  valores: Valores;
+}
+export default function NuestrosValoresClient({ valores }: NuestrosValoresClientProps) {
   return (
     <section className="py-16 bg-white text-center relative overflow-hidden">
       <h2 className="text-4xl font-bold text-blue-950 uppercase mb-12">
