@@ -14,6 +14,9 @@ import ElementosProteccionServer from "@/components/sections/productos/catalogo/
 import Noticias from "@/components/sections/home/Noticias";
 import { getFooter } from "@/lib/get-homePage";
 
+export const revalidate = 60; // Ajusta según necesidad (o quita y usa cache: 'no-store')
+// export const dynamic = 'force-dynamic'; // Úsalo solo temporalmente si aún ves datos viejos
+
 export default async function Home() {
     const contacto = await getFooter();
     return (
