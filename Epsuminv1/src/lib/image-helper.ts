@@ -1,5 +1,5 @@
-const strapiHost =
-  process.env.NEXT_PUBLIC_STRAPI_HOST || "http://localhost:1337";
+const rawHost = process.env.NEXT_PUBLIC_STRAPI_HOST || "http://localhost:1337";
+const strapiHost = rawHost.replace(/\/+$/, "");
 
 /**
  * Helper para construir URLs de imágenes de Strapi
