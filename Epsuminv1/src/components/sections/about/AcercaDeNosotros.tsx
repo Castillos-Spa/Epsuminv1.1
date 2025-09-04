@@ -8,7 +8,7 @@ export const AcercaDeNosotros = async() => {
 const quienesSomosData = await getQuienesSomos();
   
   // Proporciona valores por defecto para evitar el error de tipado
-  const { titulo = '', descripcion = [] } = quienesSomosData || {};
+  const { titulo = '' } = quienesSomosData || {};
   
   return (
     <section className="py-16 bg-white" id="nosotros">

@@ -1,11 +1,45 @@
 import { getImageUrl } from "./image-helper";
 import { query } from "./strapi-api";
+import { BlocksContent } from "@strapi/blocks-react-renderer";
+
 import {
   ProductoDestacado,
   ElementoProteccion,
   HeroSlide,
   Noticia,
+  StrapiImage,
 } from "@/types/strapi";
+
+// Interfaces para las respuestas de Strapi (basadas en tus tipos existentes)
+interface StrapiDestacado {
+  id: number;
+  titulo: string;
+  descripcion: BlocksContent | null;
+  imagen: StrapiImage;
+}
+
+interface StrapiEpp {
+  id: number;
+  titulo: string;
+  imagen: StrapiImage;
+}
+
+interface StrapiHero {
+  id: number;
+  titulo: string;
+  descripcion: BlocksContent | null;
+  imagen: StrapiImage;
+}
+
+interface StrapiNoticia {
+  id: number;
+  titulo: string;
+  extracto: string;
+  contenido_completo: BlocksContent;
+  Categoria: string;
+  fecha: string;
+  imagen: StrapiImage;
+}
 
 // ---------- DESTACADOS ----------
 export async function getDestacados(): Promise<ProductoDestacado[]> {
@@ -28,7 +62,7 @@ export async function getDestacados(): Promise<ProductoDestacado[]> {
         );
 
         return res.data.destacados.map(
-          (item: any): ProductoDestacado => ({
+          (item: StrapiDestacado): ProductoDestacado => ({
             id: item.id,
             titulo: item.titulo,
             descripcion: item.descripcion,
@@ -65,7 +99,7 @@ export async function getEpp(): Promise<ElementoProteccion[]> {
         );
 
         return res.data.epp.map(
-          (item: any): ElementoProteccion => ({
+          (item: StrapiEpp): ElementoProteccion => ({
             id: item.id,
             titulo: item.titulo,
             imagen: item.imagen,
@@ -103,7 +137,7 @@ export async function getHero(): Promise<HeroSlide[]> {
         );
 
         return res.data.hero.map(
-          (slide: any): HeroSlide => ({
+          (slide: StrapiHero): HeroSlide => ({
             id: slide.id,
             titulo: slide.titulo,
             descripcion: slide.descripcion,
@@ -140,10 +174,15 @@ export async function getNoticias(): Promise<Noticia[]> {
         );
 
         return res.data.noticias.map(
-          (item: any): Noticia => ({
-            ...item,
+          (item: StrapiNoticia): Noticia => ({
+            id: item.id,
+            titulo: item.titulo,
+            extracto: item.extracto,
             contenido_completo: item.contenido_completo ?? [],
-            imagenUrl: getImageUrl(item.imagen), // ← ¡AGREGA ESTA LÍNEA!
+            Categoria: item.Categoria,
+            fecha: item.fecha,
+            imagen: item.imagen,
+            imagenUrl: getImageUrl(item.imagen),
           })
         );
       } else {
