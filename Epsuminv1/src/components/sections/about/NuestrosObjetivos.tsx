@@ -4,7 +4,11 @@ import { getMisionVision } from "@/lib/get-homePage";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
 export const NuestrosObjetivos = async () => {
-  const {mision_descripcion, vision_descripcion} = await getMisionVision()
+const misionVisionData = await getMisionVision();
+
+  // Provide a default empty object {} if misionVisionData is null.
+  // Then, provide default empty arrays for the properties.
+  const { mision_descripcion = [], vision_descripcion = [] } = misionVisionData ?? {};
   return (
     <section className="w-full bg-white">
       <div className="bg-blue-950 text-white text-center py-3 font-bold tracking-wide text-2xl">

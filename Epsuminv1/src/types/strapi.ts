@@ -38,6 +38,9 @@ export interface Footer {
   Whatsapp: string;
   Boletin: string;
   Tiktok: string;
+  Email?: string;
+  Telefono?: string;
+  Horarios?: BlocksContent;
 }
 
 export interface Valores {
@@ -48,13 +51,16 @@ export interface Valores {
   Calidad: string;
 }
 export interface Redes {
-  id: number;
-  Email: string;
-  Telefono: string;
-  facebook?: string;
-  instagram?: string;
-  linkedin?: string;
-  tiktok?: string;
+  // Add these properties and make them optional
+  id?: number;
+  Email?: string;
+  Telefono?: string;
+  // Use consistent casing with the data you receive from Strapi
+  Facebook?: string;
+  Instagram?: string;
+  Linkedin?: string;
+  Tiktok?: string;
+  Whatsapp?: string;
   Horarios?: BlocksContent;
 }
 
@@ -87,7 +93,7 @@ export interface Noticia {
   id: number;
   titulo: string;
   extracto: string;
-  contenido_completo: BlocksContent | null;
+  contenido_completo: BlocksContent;
   Categoria: string;
   fecha: string;
   imagen: StrapiImage;

@@ -4,6 +4,11 @@ import NoticiasModal from "./NoticiasModal";
 
 export default async function Noticias() {
   const noticias = await getNoticias();
+// Create a new array with the correct type for the prop
+  const noticiasForModal = noticias.map(noticia => ({
+    ...noticia,
+    contenido_completo: noticia.contenido_completo || [],
+  }));
 
   return (
     <section className="py-16 bg-gray-50">
@@ -31,7 +36,7 @@ export default async function Noticias() {
           </Link>
         </div>
 
-        <NoticiasModal noticias={noticias} />
+        <NoticiasModal noticias={noticiasForModal} />
       </div>
     </section>
   );
