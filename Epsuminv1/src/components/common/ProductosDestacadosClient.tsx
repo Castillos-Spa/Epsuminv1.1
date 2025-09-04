@@ -4,14 +4,15 @@ import Image from 'next/image';
 import ProductCard2 from '@/components/common/ProductCard2';
 import { SimpleCarousel } from '@/components/ui/Carrousel';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { ProductoDestacado } from '@/types/strapi';
 
 interface ProductosDestacadosClientProps {
-  productos: any[]; // Usamos any[] para simplificar
+  productos: ProductoDestacado[]; 
 }
 
 const ProductosDestacadosClient = ({ productos }: ProductosDestacadosClientProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<ProductoDestacado | null>(null);
   
 
   const handleVerDetalles = (id: number) => {
@@ -51,10 +52,7 @@ const ProductosDestacadosClient = ({ productos }: ProductosDestacadosClientProps
       {/* Modal que se muestra cuando isModalOpen es true */}
       {isModalOpen && selectedProduct && (
         <div className="modal-container">
-          <div
-            className="modal-overlay"
-            onClick={closeModal}
-          ></div>
+          <div className="modal-overlay" onClick={closeModal}></div>
           <div className="modal-content modal-animate">
             <div className="flex items-center justify-between p-4 border-b border-gray-200">
               <h3 className="text-xl font-semibold text-blue-950">

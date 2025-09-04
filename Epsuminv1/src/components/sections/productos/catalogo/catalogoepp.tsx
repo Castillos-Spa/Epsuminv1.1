@@ -1,5 +1,5 @@
 import React from 'react';
-import { getEpp } from '@/lib/get-epp';
+import { getEpp } from '@/lib/get-carrousel';
 import ElementosProteccionClient from '@/components/sections/productos/catalogo/ElementosProteccionClient';
 
 export const ElementosProteccionServer = async () => {

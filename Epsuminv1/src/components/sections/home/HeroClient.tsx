@@ -7,9 +7,13 @@ import { Button } from "@/components/ui/Button";
 import CategoriaProductos from "@/components/sections/productos/CategoriaProductos";
 import Link from "next/link";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import { HeroSlide } from "@/types/strapi"; // ✅ importa el type
 
+interface HeroClientProps {
+  slides: HeroSlide[];
+}
 
-export default function HeroClient({ slides  }) {
+export default function HeroClient({ slides }: HeroClientProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -29,19 +33,18 @@ export default function HeroClient({ slides  }) {
     if (!emblaApi) return;
     onSelect();
     emblaApi.on("select", onSelect);
-    return () => emblaApi.off("select", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
   }, [emblaApi, onSelect]);
 
   const scrollTo = useCallback((i: number) => emblaApi?.scrollTo(i), [emblaApi]);
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
-  
-
   if (!slides || slides.length === 0) {
     return null;
   }
-
   return (
     <div className="relative">
       <section className="relative min-h-[920px] xl:min-h-[720px] 2xl:min-h-[860px] max-h-screen overflow-hidden">
