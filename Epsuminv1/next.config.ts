@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
         port: "1337",
         pathname: "/uploads/**",
       },
+
+      {
+        protocol: "https",
+        hostname: "admin.epsumin.cl", // <-- Cambiar este hostname
+        pathname: "/uploads/**",
+      },
       {
         protocol: "https",
         hostname: "epsuminv11-production.up.railway.app",
