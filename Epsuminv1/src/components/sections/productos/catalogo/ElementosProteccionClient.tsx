@@ -4,9 +4,10 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SimpleCarousel } from "@/components/ui/Carrousel";
+import { ElementoProteccion } from "@/types/strapi";
 
 interface ElementosProteccionClientProps {
-  elementosProteccion: any[];
+  elementosProteccion: ElementoProteccion[];
 }
 
 export default function ElementosProteccionClient({ elementosProteccion }: ElementosProteccionClientProps) {
@@ -127,14 +128,14 @@ export default function ElementosProteccionClient({ elementosProteccion }: Eleme
                           src={elemento.imagenUrl || "/placeholder.svg"}
                           width={180}
                           height={180}
-                          alt={elemento.titulo || elemento.nombre || "Elemento de protección"}
+                          alt={elemento.titulo  || "Elemento de protección"}
                           className="object-contain max-h-full max-w-full"
                           loading="lazy"
                           quality={100}
                         />
                       </div>
                       <p className="mt-1 text-center font-medium text-gray-800 text-sm xl:text-sm py-2">
-                        {elemento.titulo || elemento.nombre || "Sin nombre"}
+                        {elemento.titulo || "Sin nombre"}
                       </p>
                     </div>
                   </div>

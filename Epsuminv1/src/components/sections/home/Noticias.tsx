@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getNoticias } from "@/lib/get-noticia";
+import { getNoticias } from "@/lib/get-carrousel";
 import NoticiasModal from "./NoticiasModal";
 
 export default async function Noticias() {

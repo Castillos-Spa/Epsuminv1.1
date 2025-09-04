@@ -3,7 +3,12 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import React from 'react';
 
 export const Contacto = async() => {
-  const {descripcion,Direccion,Telefono,Email,Horarios } = await getContacto()
+  const contacto = await getContacto()
+    if (!contacto) {
+    return null; // o un fallback
+  }
+
+  const { descripcion, Direccion, Telefono, Email, Horarios } = contacto;
   return (
     <section className="py-16 bg-gray-50" id="contacto">
       <div className="container mx-auto px-4">
