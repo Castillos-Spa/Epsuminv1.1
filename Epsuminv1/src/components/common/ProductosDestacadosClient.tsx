@@ -41,7 +41,7 @@ const ProductosDestacadosClient = ({ productos }: ProductosDestacadosClientProps
               <ProductCard2
                 id={producto.id}
                 nombre={producto.titulo}
-                imagen={producto.imagenUrl || "/placeholder.svg"}
+                imagenUrl={producto.imagenUrl || "/placeholder.svg"}
                 onVerDetalles={handleVerDetalles}
               />
             </div>

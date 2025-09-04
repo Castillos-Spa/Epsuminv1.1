@@ -13,28 +13,16 @@ const nextConfig: NextConfig = {
         port: "1337",
         pathname: "/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "admin.epsumin.cl",
+        pathname: "/uploads/**", // Agregamos esta nueva
+      },
 
-      {
-        protocol: "https",
-        hostname: "admin.epsumin.cl", // <-- Cambiar este hostname
-        pathname: "/uploads/**",
-      },
-      {
-        protocol: "https",
-        hostname: "epsuminv11-production.up.railway.app",
-        pathname: "/uploads/**",
-      },
       {
         protocol: "https",
         hostname: "via.placeholder.com",
         pathname: "/**",
-      },
-
-      {
-        protocol: "https",
-        hostname: "drive.google.com",
-        port: "",
-        pathname: "/uc/**",
       },
       {
         protocol: "https",

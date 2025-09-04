@@ -11,7 +11,7 @@ interface NoticiasModalProps {
 }
 
 
-export default function NoticiasModal({ noticias }: { noticias: Noticia[] }) {
+export default function NoticiasModal({ noticias }: NoticiasModalProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedNoticia, setSelectedNoticia] = useState<Noticia | null>(null);
 
@@ -38,9 +38,9 @@ export default function NoticiasModal({ noticias }: { noticias: Noticia[] }) {
             <div className="relative h-48 overflow-hidden group">
               {noticia.imagen?.url && (
                 <Image
-                  src={noticia.imagenUrl || "https://via.placeholder.com/300x200"}
+                  src={noticia.imagenUrl }
                 alt={noticia.imagen?.alternativeText || noticia.titulo}
-                fill
+                  fill
                 className="group-hover:scale-105 transition-transform duration-500 ease-in-out object-cover"
                 />
 

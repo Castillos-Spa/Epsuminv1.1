@@ -8,7 +8,7 @@ export const AcercaDeNosotros = async() => {
 const quienesSomosData = await getQuienesSomos();
   
   // Proporciona valores por defecto para evitar el error de tipado
-  const { titulo = '', descripcion = [] } = quienesSomosData || {};
+  const { titulo = '' } = quienesSomosData || {};
   
   return (
     <section className="py-16 bg-white" id="nosotros">
@@ -27,7 +27,7 @@ const quienesSomosData = await getQuienesSomos();
           <h2 className="text-3xl font-bold text-blue-950 mb-4 ">{titulo}</h2>
           <div className="bg-blue-950 text-white p-6 rounded-lg">
             <p className="text-lg">
-              {descripcion && <BlocksRenderer content={descripcion} />}
+               <BlocksRenderer content={quienesSomosData?.descripcion || []} />
             </p>
           </div>
           <div className="bg-white p-6 border-gray-200 rounded-b-lg items-center flex flex-col gap-4 text-center ">

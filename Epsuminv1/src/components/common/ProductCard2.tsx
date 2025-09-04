@@ -7,14 +7,14 @@ import { Button } from '@/components/ui/Button';
 interface ProductCardProps {
   id: number;
   nombre: string;
-  imagen: string;
+  imagenUrl: string; // URL generada
   onVerDetalles?: (id: number) => void;
 }
 
 const ProductCard2 = ({
   id,
   nombre,
-  imagen,
+  imagenUrl, // Objeto imagen de Strapi
   onVerDetalles
 }: ProductCardProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -35,7 +35,7 @@ const ProductCard2 = ({
         
         {!imageError ? (
           <Image
-            src={imagen}
+            src={imagenUrl}
             alt={nombre}
             fill
             style={{ 
