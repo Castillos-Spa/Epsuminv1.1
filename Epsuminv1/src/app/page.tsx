@@ -30,7 +30,7 @@ export default async function Home() {
             <ServicioInfo />
             
             {/* Componentes dinámicos (WhatsApp, Testimonios, Noticias) */}
-            <DynamicComponents phoneNumber={contacto?.Whatsapp }/>
+            <DynamicComponents phoneNumber={contacto?.Whatsapp ?? ''} />
             <Noticias/>
             <MarcasAsociadas />
             

@@ -3,20 +3,11 @@
 import { useState } from "react";
 import Image from "next/image";
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { Noticia } from "@/types/strapi";
 
 
-interface Noticia {
-  id: number;
-  titulo: string;
-  extracto: string;
-  contenido_completo: [];
-  fecha: string;
-  Categoria: string;
-    imagen?: {
-    url: string;
-    alternativeText?: string;
-  } | null;
-  imagenUrl?: string; // Campo procesado desde el backend
+interface NoticiasModalProps {
+  noticias: Noticia[];
 }
 
 

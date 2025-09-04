@@ -73,15 +73,11 @@ export async function getNoticias(): Promise<Noticia[]> {
   ).then((res) => {
     if (res?.data?.noticias) {
       return res.data.noticias.map(
-        (item: any): Noticia => ({
-          id: item.id,
-          titulo: item.titulo,
-          extracto: item.extracto,
-          contenido_completo: item.contenido_completo,
-          Categoria: item.Categoria,
-          fecha: item.fecha,
-          imagen: item.imagen,
-          imagenUrl: getImageUrl(item.imagen),
+        (item: Noticia): Noticia => ({
+          // Use the Noticia type directly
+          ...item, // Spread the item and provide a fallback for any missing properties
+          // If the API returns null, provide an empty array
+          contenido_completo: item.contenido_completo ?? [],
         })
       );
     }

@@ -12,9 +12,8 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 
 export const Footer =async () => {
-  const {Direccion,Telefono,Email} = await getContacto()
-  const {descripcion,Instagram,Facebook,Linkedin,Tiktok,Boletin} = await getFooter()
-//TODO agregar tiktok y cambiar svg por icons de fa
+ const contacto = await getContacto();
+  const footer = await getFooter();
   return (
     <footer className="bg-blue-950 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -23,11 +22,11 @@ export const Footer =async () => {
           <div>
             <h3 className="text-xl font-bold mb-4">EPSUMIN</h3>
             <p className="mb-6 mr-6">
-              <BlocksRenderer content={descripcion}/>
+              <BlocksRenderer content={footer.descripcion}/>
             </p>
             <div className="flex space-x-4 mb-4">
                <a
-                  href={Facebook}
+                  href={footer.Facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-amber-600 hover:text-[#1877F2] transition-colors"
@@ -36,7 +35,7 @@ export const Footer =async () => {
                   <FaFacebook size={22} />
                 </a>
                 <a
-                  href={Instagram}
+                  href={footer.Instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-amber-600 hover:text-[#E1306C] transition-colors"
@@ -45,7 +44,7 @@ export const Footer =async () => {
                   <FaInstagram size={22} />
                 </a>
                 <a
-                  href={Linkedin}
+                  href={footer.Linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-amber-600 hover:text-[#0A66C2] transition-colors"
@@ -54,7 +53,7 @@ export const Footer =async () => {
                   <FaLinkedin size={22} />
                 </a>
                 <a
-                  href={Tiktok}
+                  href={footer.Tiktok}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-amber-600 hover:text-black transition-colors"
@@ -78,20 +77,20 @@ export const Footer =async () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>{Direccion}</span>
+                <span>{contacto.Direccion}</span>
 
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <span>{Telefono}</span>
+                <span>{contacto.Telefono}</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span>{Email}</span>
+                <span>{contacto.Email}</span>
               </li>
             </ul>
           </div>
@@ -100,7 +99,7 @@ export const Footer =async () => {
           <div className="mb-4">
             <h3 className="text-lg font-semibold">Suscríbete a Nuestro Boletín</h3>
             <a
-              href={Boletin}
+              href={footer.Boletin}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-amber-600 px-4 py-2 mt-2 rounded text-white hover:bg-blue-900 transition-colors"
