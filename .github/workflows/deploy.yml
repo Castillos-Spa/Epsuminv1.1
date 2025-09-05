@@ -1,0 +1,100 @@
+name: Deploy (frontend / backend selectivo)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  detect:
+    name: Detectar cambios
+    runs-on: ubuntu-latest
+    outputs:
+      frontend: ${{ steps.filter.outputs.frontend }}
+      backend: ${{ steps.filter.outputs.backend }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            frontend:
+              - 'Epsuminv1/**'
+              - '!Epsuminv1/README.md'
+            backend:
+              - 'backend-strapi/**'
+              - '!backend-strapi/README.md'
+
+  deploy_frontend:
+    name: Deploy Frontend (Vercel)
+    needs: detect
+    if: needs.detect.outputs.frontend == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: Epsuminv1/pnpm-lock.yaml
+      - name: Instalar dependencias
+        working-directory: Epsuminv1
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        working-directory: Epsuminv1
+        run: pnpm build
+        env:
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+      - name: Deploy a Vercel
+        run: |
+          npm i -g vercel@latest
+          vercel pull --yes --environment=production --token $VERCEL_TOKEN
+          vercel build --prod --token $VERCEL_TOKEN
+          vercel deploy --prebuilt --prod --token $VERCEL_TOKEN
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+  deploy_backend:
+    name: Deploy Backend (Railway)
+    needs: detect
+    if: needs.detect.outputs.backend == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: backend-strapi/pnpm-lock.yaml
+      - name: Instalar dependencias
+        working-directory: backend-strapi
+        run: pnpm install --frozen-lockfile
+      - name: Railway Deploy
+        uses: railwayapp/action-deploy@v2
+        with:
+          service: ${{ secrets.RAILWAY_SERVICE_ID }}
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
+  summary:
+    name: Resumen
+    needs: [detect, deploy_frontend, deploy_backend]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Mostrar
+        run: |
+          echo "Cambios frontend: ${{ needs.detect.outputs.frontend }}"
+          echo "Cambios backend: ${{ needs.detect.outputs.backend }}"
