@@ -65,18 +65,18 @@ const misionVisionData = await getMisionVision();
         </div>
         <div>
           <h3 className="font-bold text-base md:text-3xl mb-2">MISIÓN</h3>
-          <p className="text-sm md:text-base md:text-xl">
+          <div className="text-sm md:text-base md:text-xl space-y-4">
             <BlocksRenderer content={mision_descripcion}/>
-          </p>
+          </div>
         </div>
       </div>
 
       <div className="bg-blue-950 text-white px-4 py-8 md:px-20 md:py-10 grid md:grid-cols-2 gap-8">
         <div>
           <h3 className="font-bold text-base md:text-3xl mb-2">VISIÓN</h3>
-          <p className="text-lg md:text-base md:text-xl">
+          <div className="text-lg md:text-base md:text-xl space-y-4">
             <BlocksRenderer content={vision_descripcion}/>
-          </p>
+          </div>
         </div>
         <div className="flex items-center justify-center">
           <Image src="/mdi_idea.svg" alt="Visión" width={200} height={200} className="brightness-0 invert" />
