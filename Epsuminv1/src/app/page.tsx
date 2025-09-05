@@ -24,7 +24,6 @@ export default async function Home() {
             <Navbar /> 
             <Hero />
             
-            
             <ProductosDestacados />
             <CatalogoDescarga />
             

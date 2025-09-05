@@ -87,6 +87,7 @@ export default function CatalogoProductosClient({
 
   const handleDownload = async (documento: StrapiDocument) => {
     try {
+
       if (!documento) {
         alert("Archivo no disponible");
         return;
@@ -96,6 +97,7 @@ export default function CatalogoProductosClient({
         alert("URL de archivo inválida");
         return;
       }
+
       const link = window.document.createElement("a");
       link.href = fileUrl;
       link.download = documento.name || "catalogo";
@@ -179,4 +181,5 @@ export default function CatalogoProductosClient({
       )}
     </div>
   );
+
 }
