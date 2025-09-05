@@ -8,6 +8,7 @@ export interface CatalogoCatalogo extends Struct.ComponentSchema {
   };
   attributes: {
     Catalogo: Schema.Attribute.Media<'files'>;
+    nombre: Schema.Attribute.String;
   };
 }
 

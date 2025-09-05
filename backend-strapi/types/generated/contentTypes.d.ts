@@ -448,12 +448,18 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    Catalogo: Schema.Attribute.Component<'catalogo.catalogo', false> &
+    Catalogo: Schema.Attribute.Component<'catalogo.catalogo', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
-      }>;
+      }> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 6;
+        },
+        number
+      >;
     Contacto: Schema.Attribute.Component<'landing-page.contacto', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

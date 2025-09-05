@@ -1,7 +1,12 @@
-import PdfDownloadButton from "@/components/ui/PdfButton"
+// components/CatalogoProductos.tsx (Server Component)
 import Image from "next/image"
+import { getCatalogo } from "@/lib/get-homePage"
+import CatalogoProductosClient from "./catalogoClient"
 
-export default function CatalogoProductos() {
+export default async function CatalogoProductos() {
+  // Obtener datos en el servidor
+  const catalogoData = await getCatalogo()
+
   return (
     <section className="relative w-full overflow-hidden bg-white py-16" id="productos">
       {/* Fondo curvo */}
@@ -26,17 +31,19 @@ export default function CatalogoProductos() {
 
           {/* Columna de texto - Ajustada para balancear con imagen */}
           <div className="w-full md:w-2/5 lg:w-1/1 md:pl-8">
-            <h2 className="mb-4 text-3xl font-bold md:text-blue-950 md:text-4xl text-amber-600 ">Catalogo de Productos</h2>
+            <h2 className="mb-4 text-3xl font-bold md:text-blue-950 md:text-4xl text-amber-600 ">
+              Catalogo de Productos
+            </h2>
 
             <p className="mb-8 text-xl font-medium text-amber-600 md:text-2xl">
               Te invitamos a conocer nuestra Vestimenta Industrial y Elementos de Protección Personal con las mejores Marcas y Calidad.
             </p>
 
-            <PdfDownloadButton className="rounded-full border-2 border-white px-6 py-2 font-medium text-white bg-blue-950 transition transform duration-300 hover:scale-125 hover:bg-amber-600"/>
+            {/* Pasar datos al componente cliente */}
+            <CatalogoProductosClient catalogoData={catalogoData} />
           </div>
         </div>
       </div>
     </section>
   )
 }
-

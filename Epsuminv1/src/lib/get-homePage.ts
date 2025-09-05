@@ -5,6 +5,7 @@ import {
   Contacto,
   Footer,
   Valores,
+  CatalogoValor,
 } from "@/types/strapi";
 
 export async function getQuienesSomos(): Promise<QuienesSomos | null> {
@@ -108,6 +109,40 @@ export async function getValores(): Promise<Valores | null> {
     return res.data.valores;
   } catch (error) {
     console.error("Error fetching valores data:", error);
+    return null;
+  }
+}
+export async function getCatalogo(): Promise<CatalogoValor[] | null> {
+  try {
+    const res = await query("home-page?populate=Catalogo.Catalogo");
+
+    if (!res.data?.Catalogo) {
+      console.error("No se encontró el registro para 'Catalogo' en Strapi.");
+      return null;
+    }
+
+    console.log("Catalogos:", JSON.stringify(res.data.Catalogo, null, 2));
+
+    // Si es un array, mapear cada item
+    if (Array.isArray(res.data.Catalogo)) {
+      return (res.data.Catalogo as CatalogoValor[]).map((catalogo: CatalogoValor) => ({
+        id: catalogo.id,
+        nombre: catalogo.nombre || `Catálogo ${catalogo.id}`, // Usar nombre o fallback
+        Catalogo: catalogo.Catalogo,
+      }));
+    } else {
+      // Si es un solo objeto, convertirlo a array
+      return [
+        {
+          id: res.data.Catalogo.id,
+          nombre:
+            res.data.Catalogo.nombre || `Catálogo ${res.data.Catalogo.id}`,
+          Catalogo: res.data.Catalogo.Catalogo,
+        },
+      ];
+    }
+  } catch (error) {
+    console.error("Error fetching Catalogos data:", error);
     return null;
   }
 }
