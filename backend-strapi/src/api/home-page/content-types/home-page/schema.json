@@ -73,7 +73,8 @@
         }
       },
       "component": "catalogo.catalogo",
-      "repeatable": false
+      "repeatable": true,
+      "max": 6
     }
   }
 }

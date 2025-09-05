@@ -12,6 +12,9 @@
       "allowedTypes": [
         "files"
       ]
+    },
+    "nombre": {
+      "type": "string"
     }
   },
   "config": {}
