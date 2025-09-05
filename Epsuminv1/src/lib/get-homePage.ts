@@ -125,7 +125,7 @@ export async function getCatalogo(): Promise<CatalogoValor[] | null> {
 
     // Si es un array, mapear cada item
     if (Array.isArray(res.data.Catalogo)) {
-      return res.data.Catalogo.map((catalogo) => ({
+      return (res.data.Catalogo as CatalogoValor[]).map((catalogo: CatalogoValor) => ({
         id: catalogo.id,
         nombre: catalogo.nombre || `Catálogo ${catalogo.id}`, // Usar nombre o fallback
         Catalogo: catalogo.Catalogo,

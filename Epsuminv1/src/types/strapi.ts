@@ -1,5 +1,29 @@
 import { BlocksContent } from "@strapi/blocks-react-renderer";
 
+// Tipos auxiliares para evitar 'any'
+export interface StrapiFormatVariant {
+  ext?: string;
+  hash?: string;
+  mime?: string;
+  name?: string;
+  path?: string | null;
+  size?: number;
+  url: string;
+  width?: number;
+  height?: number;
+  // Permitir campos extra sin usar 'any'
+  [key: string]: string | number | boolean | null | undefined;
+}
+
+export interface StrapiImageFormats {
+  thumbnail?: StrapiFormatVariant;
+  small?: StrapiFormatVariant;
+  medium?: StrapiFormatVariant;
+  large?: StrapiFormatVariant;
+  // Posibles variantes adicionales generadas por plugins
+  [key: string]: StrapiFormatVariant | undefined;
+}
+
 // Interfaz para documentos (PDF, Word, Excel, etc.)
 export interface StrapiDocument {
   id: number;
@@ -14,13 +38,13 @@ export interface StrapiDocument {
   url: string;
   previewUrl?: string | null;
   provider: string;
-  provider_metadata?: any;
+  provider_metadata?: Record<string, unknown> | null;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
   width?: number | null;
   height?: number | null;
-  formats?: any;
+  formats?: StrapiImageFormats | null;
 }
 
 // Interfaz para imágenes (manteniendo compatibilidad)
@@ -33,7 +57,7 @@ export interface StrapiImage {
   caption?: string | null;
   width?: number;
   height?: number;
-  formats?: any;
+  formats?: StrapiImageFormats | null;
   hash?: string;
   ext?: string;
   mime?: string;
