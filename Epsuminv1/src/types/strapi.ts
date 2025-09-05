@@ -1,11 +1,47 @@
 import { BlocksContent } from "@strapi/blocks-react-renderer";
 
+// Interfaz para documentos (PDF, Word, Excel, etc.)
+export interface StrapiDocument {
+  id: number;
+  documentId: string;
+  name: string;
+  alternativeText?: string | null;
+  caption?: string | null;
+  hash: string;
+  ext: string; // .pdf, .docx, .xlsx, etc.
+  mime: string; // application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document, etc.
+  size: number; // tamaño en bytes
+  url: string;
+  previewUrl?: string | null;
+  provider: string;
+  provider_metadata?: any;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  width?: number | null;
+  height?: number | null;
+  formats?: any;
+}
+
+// Interfaz para imágenes (manteniendo compatibilidad)
 export interface StrapiImage {
   id: number;
   documentId: string;
   url: string;
   alternativeText?: string | null;
+  name?: string;
+  caption?: string | null;
+  width?: number;
+  height?: number;
+  formats?: any;
+  hash?: string;
+  ext?: string;
+  mime?: string;
+  size?: number;
 }
+
+// Tipo para campos que pueden ser medios (imágenes o documentos)
+export type StrapiMedia = StrapiImage | StrapiDocument;
 
 // ---------- HOME PAGE SECTIONS ----------
 export interface QuienesSomos {
@@ -50,12 +86,18 @@ export interface Valores {
   Seguridad: string;
   Calidad: string;
 }
+
+// NUEVA INTERFAZ PARA CATÁLOGO
+export interface CatalogoValor {
+  id: number;
+  nombre?: string; // Hacerlo opcional ya que en tus datos no aparece
+  Catalogo: StrapiDocument; // Cambiado a StrapiDocument para documentos
+}
+
 export interface Redes {
-  // Add these properties and make them optional
   id?: number;
   Email?: string;
   Telefono?: string;
-  // Use consistent casing with the data you receive from Strapi
   Facebook?: string;
   Instagram?: string;
   Linkedin?: string;
@@ -69,7 +111,7 @@ export interface HeroSlide {
   id: number;
   titulo: string;
   descripcion: BlocksContent | null;
-  imagen: StrapiImage;
+  imagen: StrapiImage; // Mantener como StrapiImage para imágenes
   imagenUrl: string;
 }
 
@@ -77,14 +119,14 @@ export interface ProductoDestacado {
   id: number;
   titulo: string;
   descripcion: BlocksContent | null;
-  imagen: StrapiImage;
+  imagen: StrapiImage; // Mantener como StrapiImage para imágenes
   imagenUrl: string;
 }
 
 export interface ElementoProteccion {
   id: number;
   titulo: string;
-  imagen: StrapiImage;
+  imagen: StrapiImage; // Mantener como StrapiImage para imágenes
   imagenUrl: string;
 }
 
@@ -96,6 +138,40 @@ export interface Noticia {
   contenido_completo: BlocksContent;
   Categoria: string;
   fecha: string;
-  imagen: StrapiImage;
+  imagen: StrapiImage; // Mantener como StrapiImage para imágenes
   imagenUrl: string;
 }
+
+// Función helper para verificar si es documento
+export const isStrapiDocument = (
+  media: StrapiMedia
+): media is StrapiDocument => {
+  return (media as StrapiDocument).mime !== undefined;
+};
+
+// Función helper para verificar si es imagen
+export const isStrapiImage = (media: StrapiMedia): media is StrapiImage => {
+  return !isStrapiDocument(media);
+};
+
+// Función para obtener el icono según la extensión
+export const getFileIcon = (ext: string) => {
+  switch (ext.toLowerCase()) {
+    case ".pdf":
+      return "📄";
+    case ".doc":
+    case ".docx":
+      return "📝";
+    case ".xls":
+    case ".xlsx":
+      return "📊";
+    case ".jpg":
+    case ".jpeg":
+    case ".png":
+    case ".gif":
+    case ".webp":
+      return "🖼️";
+    default:
+      return "📂";
+  }
+};
