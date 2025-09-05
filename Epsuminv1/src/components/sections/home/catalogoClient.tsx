@@ -79,7 +79,7 @@ export default function CatalogoProductosClient({
 
   const handleDownload = async (documento: StrapiDocument) => {
     try {
-      const fileUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}${documento.url}`;
+      const fileUrl = `${process.env.NEXT_PUBLIC_STRAPI_HOST || "http://localhost:1337"}${documento.url}`;
       const link = window.document.createElement("a");
       link.href = fileUrl;
       link.download = documento.name;
@@ -160,4 +160,5 @@ export default function CatalogoProductosClient({
       )}
     </div>
   );
+
 }
