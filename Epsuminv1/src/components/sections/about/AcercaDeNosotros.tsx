@@ -26,9 +26,10 @@ const quienesSomosData = await getQuienesSomos();
         <div className="w-full md:w-1/2 text-center flex flex-col items-center md:items-center gap-4 ">
           <h2 className="text-3xl font-bold text-blue-950 mb-4 ">{titulo}</h2>
           <div className="bg-blue-950 text-white p-6 rounded-lg">
-            <p className="text-lg">
-               <BlocksRenderer content={quienesSomosData?.descripcion || []} />
-            </p>
+            {/* Evitar <p><p> anidado: BlocksRenderer ya genera sus propios <p> */}
+            <div className="text-lg space-y-4">
+              <BlocksRenderer content={quienesSomosData?.descripcion || []} />
+            </div>
           </div>
           <div className="bg-white p-6 border-gray-200 rounded-b-lg items-center flex flex-col gap-4 text-center ">
             <p className="text-gray-700 text-xl font-semibold mb-2">Proveemos</p>

@@ -16,9 +16,10 @@ export const Contacto = async() => {
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/2 bg-blue-950 text-white p-8">
               <h2 className="text-3xl font-bold mb-6">Contáctenos</h2>
-              <p className="mb-8">
+              <div className="mb-8 space-y-4">
+                {/* Remplaza <p> contenedor para evitar anidar <p> del renderer */}
                 <BlocksRenderer content={descripcion}/>
-              </p>
+              </div>
               
               <div className="mb-6">
                 <h3 className="text-xl font-semibold mb-4">Información de Contacto</h3>
@@ -58,7 +59,7 @@ export const Contacto = async() => {
               
               <div>
                 <h3 className="text-xl font-semibold mb-4">Horario de Atención</h3>
-                <p><BlocksRenderer content={Horarios}/></p>
+                <div className="space-y-2"><BlocksRenderer content={Horarios}/></div>
                 
               </div>
             </div>

@@ -77,12 +77,28 @@ export default function CatalogoProductosClient({
     }
   }, [isDropdownOpen]);
 
+  const resolveFileUrl = (doc: StrapiDocument): string | null => {
+    if (!doc || !doc.url) return null;
+    // Si ya es absoluta
+    if (/^https?:\/\//i.test(doc.url)) return doc.url;
+    const base = (process.env.NEXT_PUBLIC_STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_HOST || "https://admin.epsumin.cl").replace(/\/$/, "");
+    return `${base}${doc.url.startsWith('/') ? '' : '/'}${doc.url}`;
+  };
+
   const handleDownload = async (documento: StrapiDocument) => {
     try {
-      const fileUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}${documento.url}`;
+      if (!documento) {
+        alert("Archivo no disponible");
+        return;
+      }
+      const fileUrl = resolveFileUrl(documento);
+      if (!fileUrl) {
+        alert("URL de archivo inválida");
+        return;
+      }
       const link = window.document.createElement("a");
       link.href = fileUrl;
-      link.download = documento.name;
+      link.download = documento.name || "catalogo";
       link.target = "_blank";
       window.document.body.appendChild(link);
       link.click();
@@ -121,21 +137,24 @@ export default function CatalogoProductosClient({
             <div className="px-4 py-2 text-sm font-medium text-gray-700 border-b border-gray-100 sticky top-0 bg-white">
               Selecciona un catálogo:
             </div>
-            {catalogoData.map((catalogo) => (
+            {catalogoData.map((catalogo) => {
+              const file = catalogo.Catalogo;
+              const ext = file?.ext || '';
+              return (
               <button
                 key={catalogo.id}
-                onClick={() => handleDownload(catalogo.Catalogo)}
+                onClick={() => file && handleDownload(file)}
                 className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-950 transition-colors duration-150 flex items-center gap-3 group"
               >
                 <span className="text-lg">
-                  {getFileIcon(catalogo.Catalogo.ext)}
+                  {ext ? getFileIcon(ext) : '📄'}
                 </span>
                 <div className="flex-1 min-w-0">
                   <div className="font-medium truncate">{catalogo.nombre}</div>
                   <div className="text-xs text-gray-500 truncate">
-                    {catalogo.Catalogo.name}
+                    {file?.name || 'Sin nombre'}
                     <span className="ml-2 uppercase text-gray-400">
-                      {catalogo.Catalogo.ext.replace('.', '')}
+                      {ext.replace('.', '')}
                     </span>
                   </div>
                 </div>
@@ -153,7 +172,7 @@ export default function CatalogoProductosClient({
                   />
                 </svg>
               </button>
-            ))}
+            )})}
           </div>
         </div>,
         document.body

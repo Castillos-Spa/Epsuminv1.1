@@ -21,9 +21,9 @@ export const Footer =async () => {
           {/* Company Info */}
           <div>
             <h3 className="text-xl font-bold mb-4">EPSUMIN</h3>
-            <p className="mb-6 mr-6">
+            <div className="mb-6 mr-6 space-y-4">
               <BlocksRenderer content={footer.descripcion}/>
-            </p>
+            </div>
             <div className="flex space-x-4 mb-4">
                <a
                   href={footer.Facebook}

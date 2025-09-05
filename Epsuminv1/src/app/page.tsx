@@ -4,7 +4,6 @@ import Hero from "@/components/sections/home/Hero";
 import ProductosDestacados from "@/components/sections/home/productoDestacado/ProductosDestacados2";
 import ServicioInfo from "@/components/sections/servicios/ServicioInfo";
 import MarcasAsociadas from "@/components/sections/home/MarcasAsociadas";
-import LogosEmpresas from "@/components/sections/home/LogosEmpresas";
 import { AcercaDeNosotros } from "@/components/sections/about/AcercaDeNosotros";
 import {NuestrosObjetivos} from "@/components/sections/about/NuestrosObjetivos";
 import NuestrosValores from "@/components/sections/about/NuestrosValores";
@@ -25,7 +24,7 @@ export default async function Home() {
             <Navbar /> 
             <Hero />
             
-            <LogosEmpresas />
+            
             <ProductosDestacados />
             <CatalogoDescarga />
             
